@@ -15,6 +15,10 @@
     <input type="text" class="form-control" id="bodyInput" name="body" aria-describedby="bodyHelp" placeholder="Enter article text">
     <small id="bodyHelp" class="form-text text-muted">Article content text</small>
   </div>
-  <button type="submit" class="btn btn-primary">Add</button>
+  <div class="form-group">
+  	<button type="submit" class="btn btn-primary">Add</button>
+  </div>
+  @include ('layouts.errors')
 </form>
+
 @endsection

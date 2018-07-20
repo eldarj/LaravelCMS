@@ -36,6 +36,11 @@ class ArticlesController extends Controller
         // $newArticle->title = request('title');
         // $newArticle->body = request('body');
         // $newArticle->save();
+        
+        $this->validate(request(), [
+            'title' => 'required|max:25',
+            'body' => 'required|min:3'
+        ]);
 
         Article::create(request(['title', 'body']));
 
