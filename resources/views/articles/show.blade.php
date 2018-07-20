@@ -8,17 +8,21 @@
 		{{$article->body}}
 	</p>
 	<div class="comments">
-		@foreach ($article->comments as $comment)
 		<div class="card">
 			<div class="card-body">
-				<h6 class="card-subtitle mb-2 text-muted">
-					@username - {{ $comment->created_at }}
-				</h6>
-				<p class="card-text">
-					{{ $comment->body }}
-				</p>
+				@foreach ($article->comments as $comment)
+					<h6 class="card-subtitle mb-2 text-muted">
+						@username
+					</h6>
+					<p class="card-text">
+						{{ $comment->body }}
+					</p>
+					<span class="small no-margin">
+						<i>{{ $comment->created_at->diffForHumans() }}</i>
+					</span>
+					<hr>
+				@endforeach
 			</div>
 		</div>
-		@endforeach
 	</div>
 @endsection
