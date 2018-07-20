@@ -21,7 +21,7 @@
 		@endforeach
 
         <small class="d-block text-right mt-3">
-          <a href="/tasls">All tasks</a>
+          <a href="/tasks">All tasks</a>
         </small>
       </div>
 
