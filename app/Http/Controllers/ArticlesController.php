@@ -7,36 +7,39 @@ use App\Article;
 
 class ArticlesController extends Controller
 {
-    //
+    /**
+     * Get all latest aricles
+     * @return view - array
+     */
     public function index() 
     {
-		$articles = Article::all();
+		$articles = Article::latest()->get();
 		return view('articles.index', compact('articles'));
     }
 
+    /**
+     * Display one single article by id
+     * @param  Article $article passed in url
+     * @return view           object
+     */
     public function show(Article $article) 
     {
-    	// $article = Article::find($article->id); we can avoid this
-
-    	// return $article; //JSON
-
-		// return view('articles.show', compact('article'));
-
-		return view('articles.show', compact('article'));
+        return view('articles.show', compact('article'));
     }
 
+    /**
+     * Redirect to create view
+     * @return view
+     */
     public function create() {
         return view('articles.create');
     }
 
+    /**
+     * Stores an article from post request
+     * @return redirect uri
+     */
     public function store() {
-        // create article model from post
-        // $newArticle = new Article;
-
-        // $newArticle->title = request('title');
-        // $newArticle->body = request('body');
-        // $newArticle->save();
-        
         $this->validate(request(), [
             'title' => 'required|max:25',
             'body' => 'required|min:3'
