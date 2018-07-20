@@ -1,10 +1,5 @@
 @extends ('layouts.master')
 
-@section ('header')
-asdsa
-
-@endsection
-
 @section ('content')
 
 <div class="my-3 p-3 bg-white rounded box-shadow">

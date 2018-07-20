@@ -1,10 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Tasks</title>
-</head>
-<body>
-	My Tasks
-	{{$task->body}}
-</body>
-</html>
+@extends ('layouts.master')
+
+@section ('content')
+	<h1>Daily Blog</h1>
+	<h2>
+		{{$task->title}}
+	</h2>
+	<p>
+		{{$task->body}}
+	</p>
+@endsection
