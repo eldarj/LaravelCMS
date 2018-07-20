@@ -1,11 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Articles</title>
-</head>
-<body>
-	My Articles
-	{{$article->title}}
-	{{$article->body}}
-</body>
-</html>
+@extends ('layouts.master')
+
+@section ('content')
+	<h1>Daily Blog</h1>
+	<h2>
+		{{$article->title}}
+	</h2>
+	<p>
+		{{$article->body}}
+	</p>
+@endsection

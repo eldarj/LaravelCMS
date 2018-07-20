@@ -19,20 +19,15 @@ Route::get('/', 'ArticlesController@index');
 Route::get('/articles', 'ArticlesController@index');
 Route::get('/articles/{article}', 'ArticlesController@show');
 
-
 /*
 |---
 | Query builders etc. 
 |---
 */
 // About page - passing vars
-Route::get('/about', function() {
-	$name = 'Eldar';
-	$age = '25';
+Route::get('/aboutsus', function() {
 
-	$tasks = DB::table('tasks')->latest()->get();
-
-	return view('about', compact('name', 'age', 'tasks'));
+	return view('about');
 });
 
 //api example
