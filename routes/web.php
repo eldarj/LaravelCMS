@@ -24,11 +24,6 @@ Route::get('/articles/{article}', 'ArticlesController@show');
 | Query builders etc. 
 |---
 */
-// About page - passing vars
-Route::get('/aboutsus', function() {
-
-	return view('about');
-});
 
 //api example
 Route::get('/tasksjson', function() {
@@ -42,15 +37,6 @@ Route::get('/tasks', function() {
 	// $tasks = DB::table('tasks')->get();
 
 	$tasks = Task::all();
-
-	return view('tasks.index', compact('tasks'));
-});
-
-// Specific method->tasks
-Route::get('/incomplete', function() {
-	// $tasks = DB::table('tasks')->get();
-
-	$tasks = Task::incomplete()->get();
 
 	return view('tasks.index', compact('tasks'));
 });
