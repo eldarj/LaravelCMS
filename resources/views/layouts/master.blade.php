@@ -13,10 +13,14 @@
     <link href="/css/offcanvas.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="/css/album.css" rel="stylesheet">
+    <!-- Custom sass -->
+    <link href="/css/app.css" rel="stylesheet">
 
   </head>
-
 <body class="bg-light">
+
+  <div id="#app"></div>
+
   @include ('layouts.navbar')
 
   @include ('layouts.subnav')
