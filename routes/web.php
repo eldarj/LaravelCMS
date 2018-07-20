@@ -15,7 +15,12 @@ Route::get('/', 'ArticlesController@index');
 
 // Via controllers
 Route::get('/articles', 'ArticlesController@index');
+
+Route::get('/articles/create', 'ArticlesController@create');
+Route::post('/articles', 'ArticlesController@store');
+
 Route::get('/articles/{article}', 'ArticlesController@show');
+
 
 Route::get('/tasks', 'TasksController@index');
 Route::get('/tasks/{task}', 'TasksController@show');

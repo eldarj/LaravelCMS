@@ -2,9 +2,9 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+// will extend eloquent model
 
 class Article extends Model
 {
-    //
+	// will extend new eloquent model
 }

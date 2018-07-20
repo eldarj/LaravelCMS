@@ -23,6 +23,7 @@
 
         <small class="d-block text-right mt-3">
           <a href="/articles">All articles</a>
+          <a href="/articles/create">Create new article</a>
         </small>
       </div>
 
