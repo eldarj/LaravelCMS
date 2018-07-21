@@ -16,4 +16,13 @@ class Article extends Model
     {
         return $this->hasMany(Comment::class);
     }
+
+    /**
+     * Adds a new comment
+     * @param string $body text of comment passed 
+     */
+    public function addComment($body)
+    {
+        $this->comments()->create(compact('body'));
+    }
 }

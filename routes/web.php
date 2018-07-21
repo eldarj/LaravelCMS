@@ -20,7 +20,7 @@ Route::get('/articles/create', 'ArticlesController@create');
 Route::post('/articles', 'ArticlesController@store');
 
 Route::get('/articles/{article}', 'ArticlesController@show');
-
+Route::post('articles/{article}', 'CommentsController@store');
 
 Route::get('/tasks', 'TasksController@index');
 Route::get('/tasks/{task}', 'TasksController@show');
