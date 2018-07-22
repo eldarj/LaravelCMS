@@ -1,6 +1,7 @@
 @extends ('layouts.master')
 
 @section ('content')
+	<p class="small writer">{{ '@'.$article->user->name }}</p>
 	<h2>
 		{{$article->title}}
 	</h2>

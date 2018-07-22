@@ -31,3 +31,9 @@ Route::get('/tasksjson', function() {
 
 	return $tasks; //returns json alone, not view
 });
+
+Route::get('/logout' , 'SessionsController@logout');
+Route::get('/login' , 'SessionsController@login');
+Route::get('/register' , 'RegistrationController@create');
+
+Route::get('/home', 'HomeController@index')->name('home');

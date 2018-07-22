@@ -13,3 +13,24 @@
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
+
+footer {
+    position: relative;
+}
+
+footer:after {
+    content: "";
+    
+    background-image: url('/images/walls/b3.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: .3;
+    
+    position: absolute;
+    z-index: -1;
+
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
