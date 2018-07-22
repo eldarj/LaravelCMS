@@ -5,9 +5,17 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+use Illuminate\Support\Facades\Hash;
+
 class User extends Authenticatable
 {
     use Notifiable;
+
+    public function setPasswordAttribute($pass){
+
+        $this->attributes['password'] = Hash::make($pass);
+
+    }
 
     /**
      * The attributes that are mass assignable.
@@ -28,7 +36,12 @@ class User extends Authenticatable
     ];
 
     public function articles()
-        {
-            return $this->hasMany(Article::class);
-        }
+    {
+        return $this->hasMany(Article::class);
+    }
+
+    public function publish(Article $article)
+    {
+        $this->articles()->save($article);
+    }
 }

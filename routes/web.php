@@ -11,12 +11,12 @@
 |
 */
 
-Route::get('/', 'ArticlesController@index');
+Route::get('/', 'ArticlesController@index')->name('home');
 
 // Via controllers
 Route::get('/articles', 'ArticlesController@index');
 
-Route::get('/articles/create', 'ArticlesController@create');
+Route::get('/articles/create', 'ArticlesController@create')->name('articles.create');
 Route::post('/articles', 'ArticlesController@store');
 
 Route::get('/articles/{article}', 'ArticlesController@show');
@@ -32,8 +32,12 @@ Route::get('/tasksjson', function() {
 	return $tasks; //returns json alone, not view
 });
 
-Route::get('/logout' , 'SessionsController@logout');
-Route::get('/login' , 'SessionsController@login');
-Route::get('/register' , 'RegistrationController@create');
+Route::get('/login' , 'SessionsController@login')->name('login');
+Route::post('/login', 'SessionsController@store');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/logout' , 'SessionsController@destroy')->name('logout');
+
+Route::get('/register' , 'RegistrationController@create')->name('register');
+Route::post('/register' , 'RegistrationController@store');
+
+// Route::get('/home', 'HomeController@index')->name('home');

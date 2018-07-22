@@ -1,7 +1,7 @@
 @extends ('layouts.master')
 
 @section ('header')
-	@include ('layouts.header')
+	@include ('articles.header')
 @endsection
 
 @section ('content')
@@ -22,7 +22,7 @@
 	            <div class="d-flex justify-content-between align-items-center w-100">
 	              <p>{{$article->body}}</strong>
 	            </div>
-	            <span class="d-block">@username - {{ $article->created_at->toFormattedDateString('') }}</span>
+	            <span class="d-block">{{ '@'.$article->user->name }} - {{ $article->created_at->toFormattedDateString('') }}</span>
 	          </div>
 	        </div>
 		@endforeach

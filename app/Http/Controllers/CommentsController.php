@@ -40,7 +40,10 @@ class CommentsController extends Controller
             'body' => 'required|min:5|max:150'
         ]);
 
-        $article->addComment(request('body'));
+        $article->addComment([
+            'body' => request('body'),
+            'user_id' => auth()->user()->id
+        ]);
 
         return back();
     }

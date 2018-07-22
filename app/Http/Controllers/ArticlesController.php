@@ -7,6 +7,12 @@ use App\Article;
 
 class ArticlesController extends Controller
 {
+
+    function __construct()
+    {
+        $this->middleware('auth')->except(['index','show']);
+    }
+
     /**
      * Get all latest aricles
      * @return view - array
@@ -45,7 +51,16 @@ class ArticlesController extends Controller
             'body' => 'required|min:3'
         ]);
 
-        Article::create(request(['title', 'body']));
+        auth()->user()->publish(
+            new Article(request(['title','body']))
+        );
+
+        // Another method
+        // Article::create([
+        //     'title' => request('title'),
+        //     'body' => request('body'),
+        //     'user_id' => auth()->id()
+        // ]);
 
         // redirect to index view
         return redirect('articles');
