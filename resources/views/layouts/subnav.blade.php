@@ -11,8 +11,14 @@
     <a class="nav-link" href="/articles">Articles</a>
   </nav>
   <nav class="nav nav-underline ml-auto">
+    @if(Auth::guest())
       <a class="nav-link" href="/login">Login</a>
       <a class="nav-link" href="/register">Register</a>
+    @endif
+
+    @if(Auth::check())
+      <a class="nav-link" href="/profile">Welcome <span class="text-info">{{ Auth::user()->name }}</span>!</a>
       <a class="nav-link" href="/logout">Logout</a>
+    @endif
   </nav>
 </div>

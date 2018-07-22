@@ -27,7 +27,7 @@
 
   @yield ('header')
 
-    <main role="main" class="container">
+    <main role="main" class="py-4 container">
       @yield ('content')
 
       @include ('layouts.aftercontent')
