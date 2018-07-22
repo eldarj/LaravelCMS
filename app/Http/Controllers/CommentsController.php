@@ -14,7 +14,7 @@ class CommentsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function storeOne(Article $article)
+    public function storeOldMethod(Article $article)
     {
         $this->validate(request(), [
             'body' => 'required|min:5|max:150'
