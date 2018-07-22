@@ -25,7 +25,7 @@
 
   @include ('layouts.subnav')
 
-  @include ('layouts.header')
+  @yield ('header')
 
     <main role="main" class="container">
       @yield ('content')

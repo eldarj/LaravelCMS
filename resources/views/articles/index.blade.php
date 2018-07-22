@@ -1,5 +1,9 @@
 @extends ('layouts.master')
 
+@section ('header')
+	@include ('layouts.header')
+@endsection
+
 @section ('content')
 
 <div class="my-3 p-3 bg-white rounded box-shadow">
