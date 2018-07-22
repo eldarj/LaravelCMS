@@ -20,6 +20,9 @@ class ArticlesController extends Controller
     public function index() 
     {
 		$articles = Article::latest()->get();
+
+        $archives = Article::selectRaw('year(created_at) as year, month(created_at) as month, count(*) published')->groupBy('year', 'month')->get()->toArray();
+
 		return view('articles.index', compact('articles'));
     }
 
