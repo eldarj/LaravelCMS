@@ -28,16 +28,16 @@
 	@endforeach
 
 	<small class="d-block text-right mt-3">
-	  <a href="/articles">All articles</a>
 	  <a href="/articles/create">Create new article</a>
 	</small>
 </div>
 <div class="p-3 bg-white rounded box-shadow">
 	<div class="small">
-		<span class="text-muted">Search articles by archive:</span>
+		<span class="text-muted mr-1">Search articles by archive:</span>
 		@foreach ($archives as $arch)
-		<a class="text-light bg-dark p-1 rounded" href="{{ route('articles.archive', [$arch['year'], $arch['month']]) }}">{{ $arch['month'] }}.{{ $arch['year'] }} (Total: {{ $arch['published'] }})</a>
+			<a class="small text-light bg-dark p-1 px-2 rounded" href="{{ route('articles.archive', [$arch['year'], $arch['month']]) }}">{{ $arch['month'] }}.{{ $arch['year'] }} #{{ $arch['published'] }}</a>
 		@endforeach
+	  <a href="/articles" class="float-right">All articles</a>
 	</div>
 </div>
 

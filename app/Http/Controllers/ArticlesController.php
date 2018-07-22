@@ -21,23 +21,16 @@ class ArticlesController extends Controller
     {
 		$articles = Article::latest()->get();
 
-        $archives = Article::selectRaw('year(created_at) as year, month(created_at) as month, count(*) published')
-        ->groupBy('year', 'month')
-        ->orderByRaw('min(created_at) desc')
-        ->get()
-        ->toArray();
-
-		return view('articles.index', compact('articles', 'archives'));
+		return view('articles.index', compact('articles'));
     }
 
     public function archive($year, $month)
     {
-        $archives = Article::selectRaw('year(created_at) as year, month(created_at) as month, count(*) published')
-        ->groupBy('year', 'month')
-        ->get()
-        ->toArray();
+        $archive = Article::latest()
+            ->filter(['year' => $year, 'month' => $month])
+            ->get();
 
-        return $archives;
+        return view('articles.index', ['articles' => $archive]);
     }
 
     /**

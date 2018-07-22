@@ -30,4 +30,25 @@ class Article extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public static function archives()
+    {
+        return static::selectRaw('year(created_at) as year, month(created_at) as month, count(*) published')
+        ->groupBy('year', 'month')
+        ->orderByRaw('min(created_at) desc')
+        ->get()
+        ->toArray();
+    }
+
+    public function scopeFilter($query, $filters)
+    {
+        if ($month = $filters['month'])
+        {
+            $query->whereMonth('created_at', $month);
+        }
+        if ($year = $filters['year'])
+        {
+            $query->whereYear('created_at', $year);
+        }
+    }
 }
