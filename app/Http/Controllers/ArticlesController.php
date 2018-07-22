@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Repositories\Articles;
 use App\Article;
 
 class ArticlesController extends Controller
@@ -17,10 +18,9 @@ class ArticlesController extends Controller
      * Get all latest aricles
      * @return view - array
      */
-    public function index() 
+    public function index(Articles $articles) 
     {
-		$articles = Article::latest()->get();
-
+        $articles = $articles->all();
 		return view('articles.index', compact('articles'));
     }
 
