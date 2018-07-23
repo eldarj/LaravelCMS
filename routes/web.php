@@ -11,7 +11,7 @@
 |
 */
 
-dd(resolve('App\Billing\Stripe'));
+// dd(resolve('App\Billing\Stripe'));
 
 Route::get('/', 'ArticlesController@index')->name('home');
 
