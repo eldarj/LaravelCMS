@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Repositories\Articles;
 use App\Article;
+use App\Tag;
 
 class ArticlesController extends Controller
 {
@@ -18,9 +19,13 @@ class ArticlesController extends Controller
      * Get all latest aricles
      * @return view - array
      */
-    public function index(Articles $articles) 
+    public function index(Articles $articles, Tag $tag = null) 
     {
-        $articles = $articles->all();
+        if ($tag) {
+            $articles = $tag->articles;
+        } else {
+            $articles = $articles->all();
+        }
 		return view('articles.index', compact('articles'));
     }
 

@@ -51,4 +51,9 @@ class Article extends Model
             $query->whereYear('created_at', $year);
         }
     }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
 }
