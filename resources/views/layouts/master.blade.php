@@ -25,6 +25,12 @@
 
   @include ('layouts.subnav')
 
+  @if ($flash = session('message'))
+    <div id="main-flash-message" class="alert alert-success" role="alert">
+      {{ $flash }}
+    </div>
+  @endif
+
   @yield ('header')
 
     <main role="main" class="py-4 container">

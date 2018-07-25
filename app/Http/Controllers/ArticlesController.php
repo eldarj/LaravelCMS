@@ -71,6 +71,8 @@ class ArticlesController extends Controller
         //     'body' => request('body'),
         //     'user_id' => auth()->id()
         // ]);
+        
+        session()->flash('message', 'Successfully created an article!');
 
         // redirect to index view
         return redirect('articles');

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Mail\Welcome;
 
+use App\Http\Requests\RegistrationForm;
+
 
 class RegistrationController extends Controller
 {
@@ -19,22 +21,11 @@ class RegistrationController extends Controller
     	return view('registration.create');
     }
 
-    public function store()
+    public function store(RegistrationForm $form)
     {
-    	// Validate form
-    	$this->validate(request(), [
-    		'name' => 'required',
-    		'email' => 'required|email',
-    		'password' => 'required|confirmed'
-    	]);
-    	
-    	// Create and save user
-    	$user = User::create(request(['name', 'email', 'password']));
+        $form->persist();
 
-    	// Signin user
-    	auth()->login($user);
-
-        \Mail::to($user)->send(new Welcome($user));
+        session()->flash('message', 'Thanks for signing up!');
 
     	// Redirect to home page
     	return redirect()->home();

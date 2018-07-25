@@ -42,6 +42,7 @@ class User extends Authenticatable
 
     public function publish(Article $article)
     {
+        $article->published = 1;
         $this->articles()->save($article);
     }
 }
