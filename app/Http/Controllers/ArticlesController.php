@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Repositories\Articles;
 use App\Article;
 use App\Tag;
+use App\Events\Articles\ThreadCreated;
 
 class ArticlesController extends Controller
 {
@@ -61,9 +62,9 @@ class ArticlesController extends Controller
             'title' => 'required|max:25',
             'body' => 'required|min:3'
         ]);
-
+        $newArticle = new Article(request(['title', 'body']));
         auth()->user()->publish(
-            new Article(request(['title','body']))
+            $newArticle
         );
 
         // Another method
@@ -73,6 +74,8 @@ class ArticlesController extends Controller
         //     'user_id' => auth()->id()
         // ]);
         
+        event(new ThreadCreated($newArticle));
+
         session()->flash('message', 'Successfully created an article!');
 
         // redirect to index view
