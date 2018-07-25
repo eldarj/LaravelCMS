@@ -27,6 +27,14 @@ Route::post('/articles', 'ArticlesController@store');
 Route::get('/articles/{article}', 'ArticlesController@show');
 Route::post('articles/{article}', 'CommentsController@store');
 
+// CHAT //
+// Chat User signup
+Route::get('/chat/signup', 'ChatUserController@create')->name('chat.signup');
+Route::post('/chat/signup', 'ChatUserController@store');
+Route::get('/chat/{chatUser}', 'ChatUserController@index')->name('chat.profile');
+// Chat UI
+Route::get('/chat', 'ChatMessageController@index');
+Route::post('/chat', 'ChatMessageController@store');
 
 // Tasks
 Route::get('/tasks', 'TasksController@index');

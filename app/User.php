@@ -40,9 +40,19 @@ class User extends Authenticatable
         return $this->hasMany(Article::class);
     }
 
+    public function chatUser()
+    {
+        return $this->hasOne(ChatUser::class);
+    }
+
     public function publish(Article $article)
     {
         $article->published = 1;
         $this->articles()->save($article);
+    }
+
+    public function registerOnChat($chatUser)
+    {
+        $this->chatUser()->save($chatUser);
     }
 }
