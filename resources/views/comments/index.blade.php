@@ -1,5 +1,5 @@
 @foreach ($article->comments as $comment)
-	<p class="card-text">
+	<p class="card-text mb-1">
 		{{ $comment->body }}
 	</p>
 	<span class="small no-margin">
