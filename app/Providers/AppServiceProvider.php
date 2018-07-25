@@ -20,8 +20,10 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
         view()->composer('articles.index', function($view){
-            $view->with('archives', Article::archives());
-            $view->with('tags', Tag::pluck('name'));
+            $archives = Article::archives();
+            $tags = Tag::has('articles')->pluck('name');
+
+            $view->with(compact('archives', 'tags'));
         });
     }
 
