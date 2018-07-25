@@ -17,7 +17,8 @@ Route::get('/', 'ArticlesController@index')->name('home');
 // Display all and filtered articles
 Route::get('/articles', 'ArticlesController@index');
 Route::get('/archive/{year}/{month}', 'ArticlesController@archive')->name('articles.archive');
-Route::get('articles/tags/{tag}', 'ArticlesController@index');
+Route::get('articles/tags/{tag}', 'TagsController@index');
+
 // Create and store articles
 Route::get('/articles/create', 'ArticlesController@create')->name('articles.create');
 Route::post('/articles', 'ArticlesController@store');

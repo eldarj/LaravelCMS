@@ -19,13 +19,13 @@ class ArticlesController extends Controller
      * Get all latest aricles
      * @return view - array
      */
-    public function index(Articles $articles, Tag $tag = null) 
+    public function index(Articles $articles/*, Tag $tag = null*/) 
     {
-        if ($tag) {
-            $articles = $tag->articles;
-        } else {
-            $articles = $articles->all();
-        }
+        // if ($tag) {
+        //     $articles = $tag->articles;
+        // } else {
+        //     $articles = $articles->all();
+        // }
 		return view('articles.index', compact('articles'));
     }
 
