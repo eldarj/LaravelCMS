@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Schema;
 
 use \App\Billing\Stripe;
 use \App\Article;
+use \App\Tag;
 
 class AppServiceProvider extends ServiceProvider
 {

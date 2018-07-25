@@ -35,21 +35,26 @@
 </div>
 <div class="row d-flex">
 	<div class="px-2 col-sm full-height">
-		<div class="h-100 p-3 bg-white rounded box-shadow">
+		<div class="h-100 p-3 bg-white rounded box-shadow archive-pills">
 			<div class="small">
 				<span class="text-muted mr-1">Search articles by archive:</span>
 				@foreach ($archives as $arch)
 					<a class="small text-light bg-dark p-1 px-2 rounded" href="{{ route('articles.archive', [$arch['year'], $arch['month']]) }}">{{ $arch['month'] }}.{{ $arch['year'] }} #{{ $arch['published'] }}</a>
 				@endforeach
 			</div>
-			<div class="mt-2 small">
+			<div class="py-3 small">
 			  <a href="/articles" class="float-right">All articles</a>
 			</div>
 		</div>
 	</div>
 	<div class="px-2 col-sm">
-		<div class="h-100 p-3 bg-white rounded box-shadow ">
-			<span class="text-muted mr-1">Search articles by tags:</span>
+		<div class="h-100 p-3 bg-white rounded box-shadow tag-pills">
+			<div class="small">
+				<span class="text-muted mr-1">Search articles by tags:</span>
+				@foreach ($tags as $tag)
+					<a class="mx-1 text-danger" href="{{ route('articles.tags', [$tag]) }}">{{ $tag }}</a>
+				@endforeach
+			</div>
 		</div>
 	</div>
 </div>
