@@ -1,0 +1,14 @@
+.settings-button {
+    margin-bottom: 15px;
+}
+
+.settings-forms {
+	position: relative;
+    overflow-y: scroll;
+    padding-left: 15px;
+    transition: height .2s ease-in-out;
+}
+
+.settings-forms > .form-group {
+    padding-bottom: 15px;
+}
