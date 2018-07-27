@@ -20,3 +20,13 @@
 // const app = new Vue({
 //     el: '#app'
 // });
+
+/**
+ * SimpleBar by ~https://github.com/Grsmto/simplebar
+ */
+require('simplebar');
+	import SimpleBar from 'simplebar';
+	window.SimpleBar = SimpleBar;
+
+// Set mainbody as the main scroll box
+let mainBody = new SimpleBar(document.getElementById('main-body'));

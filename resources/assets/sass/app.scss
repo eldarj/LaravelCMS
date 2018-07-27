@@ -8,29 +8,40 @@
 // Bootstrap
 // @import '~bootstrap/scss/bootstrap';
 
+// Simplebar
+@import '~simplebar/dist/simplebar.css';
 
-.navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-}
+body {
+    padding: 0;
+    .max-display {
+        height: 100vh;
+        width: 100vw;
+    }
+    .vert-scroll {
+        overflow-y: scroll;
+    }
+    .navbar-laravel {
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+    }
+    footer {
+        position: relative;
 
-footer {
-    position: relative;
-}
+        &:after {
+            content: "";
 
-footer:after {
-    content: "";
-    
-    background-image: url('/images/walls/b3.jpg');
-    background-size: cover;
-    background-position: center;
-    opacity: .3;
-    
-    position: absolute;
-    z-index: -1;
+            background-image: url('/images/walls/b3.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: .3;
 
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+            position: absolute;
+            z-index: -1;
+
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+    }
 }
