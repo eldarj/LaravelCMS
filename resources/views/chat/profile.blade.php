@@ -10,7 +10,10 @@
 				Email: {{ $chatUser->user->email }}
 			</p>
 			<p class="small writer ml-1">{{ '@'.$chatUser->user->name }}</p>
-			<hr>
+		</div>
+		<div class="col-sm">
+			@include('chat.settings')
 		</div>
 	</div>
+	<hr>
 @endsection

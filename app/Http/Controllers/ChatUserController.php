@@ -27,6 +27,9 @@ class ChatUserController extends Controller
      */
     public function create()
     {
+        if (!auth()->user()) {
+            return redirect()->route('register');
+        }
         if (auth()->user()->chatUser) {
             return redirect()->route('chat.profile', ['chatUser' => auth()->user()->chatUser]);
         }
