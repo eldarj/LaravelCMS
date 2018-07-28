@@ -56,11 +56,14 @@ body {
         margin-top: 310px;
         margin-left: 50px;
         align-items: flex-end;
+
     }
     .profile-body-container {
         overflow: hidden;
         position: relative; 
-
+        .profile-preview-side {
+            width: 100%;
+        }
         .profile-settings-side {
             width: 0;
             .settings {

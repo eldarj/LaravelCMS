@@ -27,7 +27,7 @@
 		</div>
 	</div>
 	<div class="d-flex profile-body-container">
-		<div class="profile-preview-side flex-grow-1">
+		<div id="profile-preview-side" class="profile-preview-side">
 			<div class="card p-3">
 				<h2 id="name" 
 				    data-db-value="{{ $chatUser->name }}">

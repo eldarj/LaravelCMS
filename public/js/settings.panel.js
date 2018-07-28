@@ -15,6 +15,7 @@
 		simpleBar: new SimpleBar(document.getElementById('main-scroll-box')),
 		settingsToggle: $('#settings-button'),
 		settingsPanel: $('#profile-settings-side'),
+		profilePanel: $('#profile-preview-side'),
 		get generalPanel() {
 			return $('#general-settings-panel');
 		},
@@ -116,6 +117,7 @@
 			self.settingsToggle.on('click', function(){
 				self.settingsToggle.find('button').toggleClass('btn-dark');
 				self.settingsPanel.toggleClass('w-75');
+				self.profilePanel.toggleClass('w-25');
 				self.settingsPanel.find('.whileHidden').removeClass('whileHidden');
 			});
 		},
@@ -125,8 +127,16 @@
 			self.formPanelsParent.style.height = self.containerHeight + "px";
 		},
 		disableMouseScroll: function(self) {
-			// disable mousewheel scroll
-			$(self.formPanelsParent).bind("mousewheel", function() {
+			$(self.formPanelsParent).on('mousewheel wheel', function(event) {
+				let current = self.settingsNavBtn.filter('.bg-dark');
+				if (event.originalEvent.wheelDelta > 0 || event.originalEvent.detail < 0) {
+			        let prev = current.prev('.settings-nav-btn').addClass('bg-dark');
+			        prev.click();
+			    }
+			    else {
+			        let next = current.next('.settings-nav-btn').addClass('bg-dark');
+			        next.click();
+			    }
 			    return false;
 			});
 		},
