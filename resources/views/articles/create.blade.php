@@ -12,7 +12,7 @@
   </div>
   <div class="form-group">
     <label for="bodyInput">Body</label>
-    <input type="text" class="form-control" id="bodyInput" name="body" aria-describedby="bodyHelp" placeholder="Enter article text">
+    <textarea type="text" class="form-control" id="bodyInput" name="body" aria-describedby="bodyHelp" placeholder="Enter article text"></textarea>
     <small id="bodyHelp" class="form-text text-muted">Article content text</small>
   </div>
   <div class="form-group">

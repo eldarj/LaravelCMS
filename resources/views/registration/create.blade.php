@@ -16,6 +16,10 @@
 	    <input type="email" class="form-control" id="emailInput" name="email" aria-describedby="emailHelp" placeholder="My email address" required/>
 	  </div>
 	  <div class="form-group">
+	    <label for="usernameInput">Username</label>
+	    <input type="text" class="form-control" id="usernameInput" name="username" aria-describedby="usernameHelp" placeholder="My Username" required/>
+	  </div>
+	  <div class="form-group">
 	    <label for="passwordInput">Password</label>
 	    <input type="password" class="form-control" id="passwordInput" name="password" aria-describedby="passwordHelp" placeholder="My secret password" required/>
 	  </div>

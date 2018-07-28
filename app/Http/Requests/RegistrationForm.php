@@ -30,17 +30,16 @@ class RegistrationForm extends FormRequest
         return [
             'name' => 'required',
             'email' => 'required|email',
+            'username' => 'required',
             'password' => 'required|confirmed'
         ];
     }
 
     public function persist()
     {
-        
-
         // Create and save user
         $user = User::create(
-            $this->only(['name', 'email', 'password'])
+            $this->only(['name', 'email', 'username', 'password'])
         );
 
         // Signin user

@@ -20,7 +20,7 @@ class SessionsController extends Controller
     public function store()
     {
     	// Attempt to auth. the user
-    	if(! auth()->attempt(request(['email', 'password'])) ) {
+    	if(! auth()->attempt(request(['username', 'password'])) ) {
 			return back()->withErrors([
 				'message' => 'Please check your credentials and try again.'
 			]);
