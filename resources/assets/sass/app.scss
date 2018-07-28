@@ -13,6 +13,9 @@
 
 body {
     padding: 0;
+    #main-body {
+        padding-top: 56px;
+    }
     .max-display {
         height: 100vh;
         width: 100vw;
@@ -23,6 +26,28 @@ body {
     .navbar-laravel {
       background-color: #fff;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+    }
+    .avatar-img {
+        background-size: cover;
+        background-position: center;
+
+        width: 200px;
+        height: 200px;
+
+        &.small {
+            height: 100px;
+            width: 100px;
+        }
+    }
+    .cover-container {
+        width: 100%;
+        position: relative;
+
+        .cover-img {
+            background-size: cover;
+            background-position: center;
+            height: 500px;
+        }
     }
     footer {
         position: relative;
