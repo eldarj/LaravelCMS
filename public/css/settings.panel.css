@@ -1,5 +1,5 @@
 .settings-button {
-    margin-bottom: 15px;
+	margin-left: auto;
 }
 .settings-panel {
 	border-right: 1px solid #ccc;
@@ -11,7 +11,6 @@
     transition: height .2s ease-in-out;
     margin-bottom: 20px;
 }
-
 .settings-forms > .form-group {
     padding-bottom: 15px;
 }

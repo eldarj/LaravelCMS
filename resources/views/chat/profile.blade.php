@@ -9,10 +9,10 @@
 				 data-db-value="{{$chatUser->cover_photo}}"></div>
 		</div>
 	</div>
-	<div class="row mb-3">
-		<div class="avatar-container">
+	<div class="avatar-container d-flex mb-2">
+		<div class="avatar-wrap">
 			<div class="col-sm">
-				<div class="avatar-wrap rounded p-2 card">
+				<div class="avatar-wrap rounded p-2 card border shadow">
 					<div id="avatar" 
 						 class="avatar-img" 
 						 style="background-image:url('{{ $chatUser->avatar  }}')"
@@ -20,9 +20,14 @@
 				</div>
 			</div>
 		</div>
+		<div id="settings-button" class="settings-button">
+			<button class="btn btn-light">
+				<i class="fas fa-cog"></i>
+			</button>
+		</div>
 	</div>
-	<div class="row">
-		<div class="col-sm">
+	<div class="d-flex profile-body-container">
+		<div class="profile-preview-side flex-grow-1">
 			<div class="card p-3">
 				<h2 id="name" 
 				    data-db-value="{{ $chatUser->name }}">
@@ -39,7 +44,7 @@
 				<p class="small writer ml-1">{{ '@'.$chatUser->user->name }}</p>
 			</div>
 		</div>
-		<div class="col-sm">
+		<div id="profile-settings-side" class="profile-settings-side ml-2">
 			@include('chat.settings')
 		</div>
 	</div>

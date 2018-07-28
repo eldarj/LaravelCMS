@@ -47,6 +47,28 @@ body {
             background-size: cover;
             background-position: center;
             height: 500px;
+            width: 100%;
+            top: -24px;
+            position: absolute;
+        }
+    }
+    .avatar-container {
+        margin-top: 310px;
+        margin-left: 50px;
+        align-items: flex-end;
+    }
+    .profile-body-container {
+        overflow: hidden;
+        position: relative; 
+
+        .profile-settings-side {
+            width: 0;
+            .settings {
+                &.whileHidden {
+                    position: absolute;
+                    width: 75%;
+                }
+            }
         }
     }
     footer {

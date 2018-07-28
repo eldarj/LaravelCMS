@@ -1,14 +1,9 @@
-<div class="settings">
-	<div class="settings-button">
-		<button class="btn btn-light">
-			<i class="fas fa-cog"></i>
-		</button>
-	</div>
+<div class="settings whileHidden">
 	<div class="d-flex">
 		<div class="settings-panel">
 			<div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
 			  <div class="btn-group-vertical mr-2" role="group" aria-label="First group">
-			    <button data-section="#general-settings-panel" type="button" class="settings-nav-btn btn btn-light">General</button>
+			    <button data-section="#general-settings-panel" type="button" class="settings-nav-btn btn btn-light bg-dark text-white">General</button>
 			    <button data-section="#avatar-settings-panel" type="button" class="settings-nav-btn btn btn-light">Avatar</button>
 			    <button data-section="#cover-settings-panel" type="button" class="settings-nav-btn btn btn-light">Cover</button>
 			  </div>
@@ -42,9 +37,7 @@
 					    		  class="form-control" 
 					    		  placeholder="Write something about yourself..." 
 					    		  rows="5" 
-					    		  name="description">
-					    		  {{ old('description', $chatUser->description) }}
-					    		</textarea>
+					    		  name="description">{{ old('description', $chatUser->description) }}</textarea>
 				  	</div>
 		    	</div>
 		    	<div id="avatar-settings-panel" class="settings-group form-group">
