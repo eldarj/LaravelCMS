@@ -105,21 +105,21 @@ class ChatUserController extends Controller
                 'file' => $request->cover_photo
             ];
         }
+        if ($uploaded) {
+            // Generate paths
+            // $generateFileName = $request->user_id . md5_file($uploaded['file']) . now()->format('his') . 
+            //             "." . $uploaded['file']->getClientOriginalExtension();
+            $generateFileName = $request->user_id . 
+                        "." . $uploaded['file']->getClientOriginalExtension();
 
-        // Generate paths
-        // $generateFileName = $request->user_id . md5_file($uploaded['file']) . now()->format('his') . 
-        //             "." . $uploaded['file']->getClientOriginalExtension();
-        $generateFileName = $request->user_id . 
-                    "." . $uploaded['file']->getClientOriginalExtension();
-
-        // Upload file
-        $uploaded['file']->move($uploaded['dest'], $generateFileName);
-        
-        // Store path in db
-        $chatUser->{$uploaded["field"]} = '/' . $uploaded['dest'] . '/' . $generateFileName;
-        $chatUser->save();
-
-        return redirect()->back();
+            // Upload file
+            $uploaded['file']->move($uploaded['dest'], $generateFileName);
+            
+            // Store path in db
+            $chatUser->{$uploaded["field"]} = '/' . $uploaded['dest'] . '/' . $generateFileName;
+            $chatUser->save();
+        }
+        return redirect()->route('profile', compact('chatUser'));
     }
 
     /**
