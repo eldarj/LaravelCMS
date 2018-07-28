@@ -23,7 +23,7 @@ class Article extends Model
      */
     public function addComment($body)
     {
-        $this->comments()->create(compact('body'));
+        $this->comments()->create($body);
     }
     
     public function user()
