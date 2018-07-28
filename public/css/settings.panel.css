@@ -1,12 +1,15 @@
 .settings-button {
     margin-bottom: 15px;
 }
-
+.settings-panel {
+	border-right: 1px solid #ccc;
+	margin-right: 15px;
+}
 .settings-forms {
 	position: relative;
     overflow-y: scroll;
-    padding-left: 15px;
     transition: height .2s ease-in-out;
+    margin-bottom: 20px;
 }
 
 .settings-forms > .form-group {
