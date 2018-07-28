@@ -14,8 +14,13 @@ class CreateChatUsersTable extends Migration
     public function up()
     {
         Schema::create('chat_users', function (Blueprint $table) {
-            $table->integer('user_id');
-            $table->primary('user_id');
+            $table->increments('id');
+            $table->string('name');
+            $table->text('description')->nullable();
+            $table->string('avatar')->default('/images/users/profiles/default/icon/default.png');
+            $table->string('cover_photo')->nullable();
+            $table->unsignedInteger('user_id');
+             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
