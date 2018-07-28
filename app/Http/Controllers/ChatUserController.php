@@ -30,8 +30,8 @@ class ChatUserController extends Controller
         if (!auth()->user()) {
             return redirect()->route('register');
         }
-        if (auth()->user()->chatUser) {
-            return redirect()->route('chat.profile', ['chatUser' => auth()->user()->chatUser]);
+        if ($chatUser = auth()->user()->chatUser) {
+            return redirect()->route('profile', compact('chatUser'));
         }
         return view('chat.signup');
     }
@@ -51,7 +51,7 @@ class ChatUserController extends Controller
         auth()->user()->registerOnChat($newChatUser);
 
         // redirect to index view
-        return redirect()->route('chat.profile', ['chatUser' => $newChatUser]);
+        return redirect()->route('profile', ['chatUser' => $newChatUser]);
     }
 
     /**
@@ -83,9 +83,43 @@ class ChatUserController extends Controller
      * @param  \App\ChatUser  $chatUser
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ChatUser $chatUser)
+    public function update(Request $request)
     {
-        //
+        // Update all data
+        $chatUser = ChatUser::find(request('user_id'));
+        $chatUser->update(request()->all());
+
+        // Check for uploaded files
+        $uploaded = [];
+        if ($request->avatar) {
+            $uploaded = [
+                'field' => 'avatar', 
+                'dest' => 'images/users/profiles/upload/icon', 
+                'file' => $request->avatar
+            ];
+        }
+        if ($request->cover_photo) {
+            $uploaded = [
+                'field' => 'cover_photo', 
+                'dest' => 'images/users/profiles/upload/covers', 
+                'file' => $request->cover_photo
+            ];
+        }
+
+        // Generate paths
+        // $generateFileName = $request->user_id . md5_file($uploaded['file']) . now()->format('his') . 
+        //             "." . $uploaded['file']->getClientOriginalExtension();
+        $generateFileName = $request->user_id . 
+                    "." . $uploaded['file']->getClientOriginalExtension();
+
+        // Upload file
+        $uploaded['file']->move($uploaded['dest'], $generateFileName);
+        
+        // Store path in db
+        $chatUser->{$uploaded["field"]} = '/' . $uploaded['dest'] . '/' . $generateFileName;
+        $chatUser->save();
+
+        return redirect()->back();
     }
 
     /**

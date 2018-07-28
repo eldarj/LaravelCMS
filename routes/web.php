@@ -31,10 +31,13 @@ Route::post('articles/{article}', 'CommentsController@store');
 // Chat User signup
 Route::get('/chat/signup', 'ChatUserController@create')->name('chat.signup');
 Route::post('/chat/signup', 'ChatUserController@store');
-Route::get('/chat/{chatUser}', 'ChatUserController@index')->name('chat.profile');
 // Chat UI
 Route::get('/chat', 'ChatMessageController@index');
 Route::post('/chat', 'ChatMessageController@store');
+
+// PROFILE //
+Route::get('/profile/{chatUser}', 'ChatUserController@index')->name('profile');
+Route::post('/profile/update', 'ChatUserController@update')->name('profile.update');
 
 // Tasks
 Route::get('/tasks', 'TasksController@index');
