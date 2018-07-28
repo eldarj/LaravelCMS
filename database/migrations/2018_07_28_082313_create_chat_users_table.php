@@ -18,7 +18,7 @@ class CreateChatUsersTable extends Migration
             $table->string('name');
             $table->text('description')->nullable();
             $table->string('avatar')->default('/images/users/profiles/default/icon/default.png');
-            $table->string('cover_photo')->nullable();
+            $table->string('cover_photo')->default('/images/users/profiles/default/covers/default.png');
             $table->unsignedInteger('user_id');
              $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
