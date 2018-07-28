@@ -45,7 +45,8 @@ body {
 
         .cover-img {
             background-size: cover;
-            background-position: center;
+            background-position: center;    
+            background-attachment: fixed;
             height: 500px;
             width: 100%;
             top: -24px;
