@@ -62,10 +62,28 @@
 						$i.on('input', function(){
 							if (type === 'file') {
 								let value = $i.val();
+								if (!document.getElementById('clearFileInput')) {
+									var clearBtn = document.createElement('button'),
+										icon = document.createElement('i');
+									icon.classList = "fas fa-times";
+									clearBtn.classList = "btn btn-light d-flex mx-2 my-auto p-1 text-danger";
+									clearBtn.id = 'clearFileInput';
+									clearBtn.appendChild(icon);
+									clearBtn.addEventListener('click', function(e){
+										$i.wrap('<form>').closest('form').get(0).reset();
+										$i.unwrap();
+										clearBtn.remove();
+										e.preventDefault();
+									});
+								}
+
+								$i.after(clearBtn);
+
 								if (!value) {
 									$previewElement.css({
 										backgroundImage: `url('${dbValue}')`
 									});
+									clearBtn.remove();
 								} else {
 									let fileObj = $i.prop('files'),
 										reader = new FileReader();
@@ -99,7 +117,7 @@
 
 				$e.on('click', () => {
 				// disable other inputs, so we don't post everything on saving the changes
-				self.disableInputsExcept($sectionFormInputs);
+				// self.disableInputsExcept($sectionFormInputs); // we at first were disabling other elements, but no we don't :)
 				self.loseActiveExcept($e);
 					self.formPanelsParent.style.height = sectionHeight + "px";
 					$(self.simpleBar.getScrollElement()).animate({
