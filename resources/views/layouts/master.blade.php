@@ -41,9 +41,9 @@
 
         @include ('layouts.footer')
 
-      <div class="float-box col-sm-2 m-4 d-inline-block fixed-bottom rounded bg-light shadow-lg border">
+      @if (auth()->user() && !auth()->user()->chatUser)
         @include ('layouts.floaters.chat')
-      </div>
+      @endif
     </div>
   </body>
   <!-- Jquery -->

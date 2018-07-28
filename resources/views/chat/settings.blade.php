@@ -50,8 +50,7 @@
 						<input type="file" 
 							   class="form-control" 
 							   name="avatar" 
-							   accept="image/x-png,image/jpeg" 
-							   disabled>
+							   accept="image/x-png,image/jpeg" >
 					</div>
 			    	</div>
 		    	<div id="cover-settings-panel" class="settings-group form-group">
@@ -63,8 +62,7 @@
 					    </div>
 						<input type="file" 
 							   class="form-control" 
-							   name="cover_photo" 
-							   disabled>
+							   name="cover_photo">
 					</div>
 		    	</div>
 			</div>

@@ -17,7 +17,8 @@
     @endif
 
     @if(Auth::check())
-      <a class="nav-link" href="/profile">Welcome <span class="text-info">{{ Auth::user()->name }}</span>!</a>
+      <a class="nav-link" href="/chat/signup">Chat <i class="far fa-comments"></i></a>
+      <a class="nav-link" href="/profile/signup">Welcome <span class="text-info">{{ Auth::user()->name }}</span>!</a>
       <a class="nav-link" href="/logout">Logout</a>
     @endif
   </nav>
