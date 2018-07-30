@@ -13,14 +13,19 @@
 		<div class="avatar-wrap">
 			<div class="col-sm">
 				<div class="avatar-wrap rounded p-2 card border shadow">
-					<div id="avatar" 
-						 class="avatar-img" 
-						 style="background-image:url('{{ $chatUser->avatar  }}')"
-						 data-db-value="{{$chatUser->avatar}}"></div>
+					<a class="image-popup-vertical-fit" href="{{$chatUser->avatar}}" title="{{$chatUser->name}}">
+						<div id="avatar" 
+							 class="avatar-img" 
+							 style="background-image:url('{{ $chatUser->avatar  }}')"
+							 data-db-value="{{$chatUser->avatar}}"></div>
+					</a>
 				</div>
 			</div>
 		</div>
 		<div id="settings-button" class="settings-button">
+			<a href="{{ route('friends.add', ['chatUser' => $chatUser]) }}" class="btn btn-info">
+				Add to friends
+			</a>
 			<button class="btn btn-light">
 				<i class="fas fa-cog"></i>
 			</button>

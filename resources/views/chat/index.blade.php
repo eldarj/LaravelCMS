@@ -1,7 +1,7 @@
 @extends ('layouts.master')
 
 @section ('header')
-	@include ('articles.header')
+	@include ('chat.header')
 @endsection
 
 @section ('content')
@@ -17,13 +17,15 @@
 			<div class="pt-1">
 		        <div class="mw-75 d-flex @if($isme) flex-row-reverse @endif">
 		        	<div class="message-left d-inline-block mx-1 mt-1">
-						<div class="border message-profile-pic rounded-circle @if($message->hideimg) invisible @endif"
-							 style="background-image:url('{{ $message->user->chatUser->avatar }}');">
-						</div>
+		        		<a href="/profile/{{$message->user->chatUser->name}}" target="_blank">
+							<div class="border profile-pic message-profile-pic rounded-circle @if($message->hideimg) invisible @endif"
+								 style="background-image:url('{{ $message->user->chatUser->avatar }}');">
+							</div>
+		        		</a>
 					</div>
 					<div class="message-right d-inline-block">
 						<div class="user-name d-block small text-minimal @if($isme) text-right @endif">
-		        			<span class="small text-secondary">{{$message->user->chatUser->name}}</span>
+		        			<a href="/profile/{{$message->user->chatUser->name}}" class="small text-secondary">{{$message->user->chatUser->name}}</a>
 	        			</div>
 						<div class="message-text d-inline-block small py-2 px-3 border rounded shadow-sm @if($isme) bg-info text-white @else bg-light text-dark @endif">
 							{{ $message->message_text }}

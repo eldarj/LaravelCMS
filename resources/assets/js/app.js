@@ -30,3 +30,15 @@ require('simplebar');
 
 // Set mainbody as the main scroll box
 let mainBody = new SimpleBar(document.getElementById('main-body'));
+
+$(document).ready(function() {
+	// Magnific popup
+	$('.image-popup-vertical-fit').magnificPopup({
+		type: 'image',
+		closeOnContentClick: true,
+		mainClass: 'mfp-img-mobile',
+		image: {
+			verticalFit: true
+		}
+	});
+});

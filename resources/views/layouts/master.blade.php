@@ -17,7 +17,8 @@
     <link href="/css/app.css" rel="stylesheet">
     <!-- Fontawesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="/css/magnific-popup.css">
   </head>
   <body class="bg-light">
     <div id="main-body" class="max-display vert-scroll">
@@ -59,6 +60,8 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
   <!-- Offcanvas -->
   <script src="/js/offcanvas.js"></script>
+  <!-- magnific popup.js -->
+  <script src="/js/jquery.magnific-popup.min.js"></script>
   <!-- app.js -->
   <script src="/js/app.js"></script>
   @yield('pagespecific')

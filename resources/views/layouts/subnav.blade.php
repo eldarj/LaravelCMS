@@ -1,7 +1,7 @@
 <div class="nav-scroller bg-white box-shadow d-flex">
   <nav class="nav nav-underline">
     <a class="nav-link active" href="/">Dashboard</a>
-    <a class="nav-link" href="/">
+    <a class="nav-link" href="/friends">
       Friends
       <span class="badge badge-pill bg-light align-text-bottom">27</span>
     </a>
