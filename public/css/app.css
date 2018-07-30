@@ -129,6 +129,10 @@ body .vert-scroll {
   overflow-y: scroll;
 }
 
+body .text-minimal {
+  color: #aaa !important;
+}
+
 body .navbar-laravel {
   background-color: #fff;
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
@@ -155,7 +159,50 @@ body .cover-container {
 body .cover-container .cover-img {
   background-size: cover;
   background-position: center;
+  background-attachment: fixed;
   height: 500px;
+  width: 100%;
+  top: -24px;
+  position: absolute;
+}
+
+body .avatar-container {
+  margin-top: 310px;
+  margin-left: 50px;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+body .profile-body-container {
+  overflow: hidden;
+  position: relative;
+}
+
+body .profile-body-container .profile-preview-side {
+  width: 100%;
+}
+
+body .profile-body-container .profile-settings-side {
+  width: 0;
+}
+
+body .profile-body-container .profile-settings-side .settings.whileHidden {
+  position: absolute;
+  width: 75%;
+}
+
+body .message-time {
+  font-size: 10px;
+}
+
+body .message-profile-pic {
+  width: 30px;
+  height: 30px;
+  background-size: cover;
+  background-position: center;
+  -webkit-box-shadow: 0px 0px 0px 1px #dee2e6;
+          box-shadow: 0px 0px 0px 1px #dee2e6;
 }
 
 body footer {
@@ -166,7 +213,7 @@ body footer:after {
   content: "";
   background-image: url("/images/walls/b3.jpg");
   background-size: cover;
-  background-position: center;
+  background-position: bottom;
   opacity: .3;
   position: absolute;
   z-index: -1;
