@@ -11,7 +11,11 @@
 |
 */
 
-// Root and home
+/*
+|--------------------------------------------------------------------------
+| ARTICLES
+|--------------------------------------------------------------------------
+*/
 Route::get('/', 'ArticlesController@index')->name('home');
 
 // Display all and filtered articles
@@ -23,38 +27,41 @@ Route::get('articles/tags/{tag}', 'TagsController@index')->name('articles.tags')
 Route::get('/articles/create', 'ArticlesController@create')->name('articles.create');
 Route::post('/articles', 'ArticlesController@store');
 
-//Delete an article
-Route::delete('/articles/{article}', 'ArticlesController@destroy');
-
 // Single article and comments
 Route::get('/articles/{article}', 'ArticlesController@show')->name('articles.show');
 Route::post('articles/{article}', 'CommentsController@store');
 
-// CHAT //
+//Delete an article
+Route::delete('/articles/{article}', 'ArticlesController@destroy');
+
+
+/*
+|--------------------------------------------------------------------------
+| CHAT
+|--------------------------------------------------------------------------
+*/
+// Chat
+Route::get('/chat', 'ChatMessageController@index')->name('chat.index')->middleware('auth.chat');
+Route::post('/chat', 'ChatMessageController@store')->middleware('auth.chat');
+
 // Chat User signup
 Route::get('/chat/signup', 'ChatUserController@create')->name('chat.signup');
 Route::post('/chat/signup', 'ChatUserController@store');
-// Chat UI
-Route::get('/chat', 'ChatMessageController@index')->name('chat.index')->middleware('auth.chat');;
-Route::post('/chat', 'ChatMessageController@store')->middleware('auth.chat');;
 
-// PROFILE //
+
+/*
+|--------------------------------------------------------------------------
+| PROFILE
+|--------------------------------------------------------------------------
+*/
 Route::get('/profile/{chatUser}', 'ChatUserController@index')->name('profile');
 Route::post('/profile/update', 'ChatUserController@update')->name('profile.update');
 
-// Tasks
-Route::get('/tasks', 'TasksController@index');
-Route::get('/tasks/{task}', 'TasksController@show');
-
-// Json example
-Route::get('/tasksjson', function() {
-	$tasks = DB::table('tasks')->get();
-
-	return $tasks; //returns json alone, not view
-});
-
-// AUTH //
-// Login and logout
+/*
+|--------------------------------------------------------------------------
+| Auth:: login & register
+|--------------------------------------------------------------------------
+*/
 Route::get('/login' , 'SessionsController@login')->name('login');
 Route::post('/login', 'SessionsController@store');
 
@@ -63,3 +70,22 @@ Route::get('/logout' , 'SessionsController@destroy')->name('logout');
 // Register
 Route::get('/register' , 'RegistrationController@create')->name('register');
 Route::post('/register' , 'RegistrationController@store');
+
+/*
+|--------------------------------------------------------------------------
+| Tasks
+|--------------------------------------------------------------------------
+*/
+Route::get('/tasks', 'TasksController@index');
+Route::get('/tasks/{task}', 'TasksController@show');
+
+/*
+|--------------------------------------------------------------------------
+| Tasksjson
+|--------------------------------------------------------------------------
+*/
+Route::get('/tasksjson', function() {
+	$tasks = DB::table('tasks')->get();
+
+	return $tasks; //returns json alone, not view
+});
