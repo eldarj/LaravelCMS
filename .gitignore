@@ -1,4 +1,5 @@
 /node_modules
+/public/images/users/profiles/upload
 /public/hot
 /public/storage
 /storage/*.key
