@@ -66,19 +66,26 @@ class ArticlesController extends Controller
         auth()->user()->publish(
             $newArticle
         );
-
-        // Another method
-        // Article::create([
-        //     'title' => request('title'),
-        //     'body' => request('body'),
-        //     'user_id' => auth()->id()
-        // ]);
         
         event(new ThreadCreated($newArticle));
-
         session()->flash('message', 'Successfully created an article!');
 
         // redirect to index view
-        return redirect('articles');
+        return redirect()->route('articles.show', ['article' => $newArticle]);
+    }
+
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Article  $article
+     */
+    public function destroy($id)
+    {
+        $article = Article::find($id);
+        $article->delete();
+
+        session()->flash('message', 'Successfully deleted the article!');
+        return redirect()->route('articles.index');
     }
 }

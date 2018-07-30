@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\ChatMessage;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class ChatMessageController extends Controller
 {
@@ -15,6 +16,16 @@ class ChatMessageController extends Controller
     public function index()
     {
         $messages = ChatMessage::all();
+
+        for ($i = 1; $i < count($messages); $i++) {
+            $prev = $messages[$i - 1];
+            if ($prev->avatar === $messages[$i]->avatar) {
+                $messages[$i]->hideimg = true;
+            }
+            if ($prev->created_at->toDateString() === $messages[$i]->created_at->toDateString()) {
+                $prev->hidetimestamp = true;
+            }
+        }
         return view('chat.index', compact('messages'));
     }
 
@@ -37,7 +48,7 @@ class ChatMessageController extends Controller
     public function store()
     {
         $this->validate(request(), [
-            'message_text' => 'required|min:5|max:150'
+            'message_text' => 'required|min:2|max:150'
         ]);
 
         ChatMessage::create([

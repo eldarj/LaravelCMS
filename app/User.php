@@ -55,4 +55,13 @@ class User extends Authenticatable
     {
         $this->chatUser()->save($chatUser);
     }
+
+    public function canDelete() 
+    {
+        if ($this->user_groups_id === 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

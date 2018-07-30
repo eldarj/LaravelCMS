@@ -5,27 +5,33 @@
 @endsection
 
 @section ('content')
+<?php $isme = false; ?>
 
 <div class="row">
 	<div class="my-3 mx-2 p-3 bg-white rounded box-shadow col-sm">
 		<h6 class="border-bottom border-gray pb-2 mb-0">Welcome to the Chat</h6>
-
 		@foreach ($messages as $key => $message)
-			<div class="my-3 media text-muted pt-3">
-		      <img data-src="holder.js/32x32?theme=thumb&bg=007bff&fg=007bff&size=1" alt="" class="mr-2 rounded">
-		      <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-		        <div class="w-30">
-		          <span class="rounded-circle bg-dark shadow p-1 text-info">
-		          	{{ '@'.$message->user->chatUser->name }}
-		          </span>
-		          <span class="m-2 p-3 rounded bg-light shadow p-1 text-dark">
-		          	{{ $message->message_text }}
-		      	  </span>
-		          <span class="m-2 small text-info">
-		          	{{ $message->created_at->toFormattedDateString('') }}
-		          </span>
+			@if($message->user->chatUser->id === auth()->user()->chatUser->id)
+				<?php $isme = true; ?>
+			@endif
+			<div class="pt-1">
+		        <div class="mw-75 d-flex @if($isme) flex-row-reverse @endif">
+					<div class="message-left d-inline-block mx-1 mt-1">
+						<div class="border message-profile-pic rounded-circle @if($message->hideimg) invisible @endif"
+							 style="background-image:url('{{ $message->user->chatUser->avatar }}');">
+						</div>
+					</div>
+					<div class="message-right d-inline-block">
+						<div class="message-text d-inline-block small py-2 px-3 border rounded shadow-sm @if($isme) bg-info text-white @else bg-light text-dark @endif">
+							{{ $message->message_text }}
+						</div>
+						@if(!$message->hidetimestamp)
+						<div class="message-time d-block my-1 small text-minimal @if($isme) text-right @endif">
+							{{ $message->created_at->toFormattedDateString('') }}
+						</div>
+						@endif
+					</div>
 		        </div>
-		      </div>
 		    </div>
 		@endforeach
 

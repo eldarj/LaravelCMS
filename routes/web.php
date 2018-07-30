@@ -15,7 +15,7 @@
 Route::get('/', 'ArticlesController@index')->name('home');
 
 // Display all and filtered articles
-Route::get('/articles', 'ArticlesController@index');
+Route::get('/articles', 'ArticlesController@index')->name('articles.index');
 Route::get('/archive/{year}/{month}', 'ArticlesController@archive')->name('articles.archive');
 Route::get('articles/tags/{tag}', 'TagsController@index')->name('articles.tags');
 
@@ -23,8 +23,11 @@ Route::get('articles/tags/{tag}', 'TagsController@index')->name('articles.tags')
 Route::get('/articles/create', 'ArticlesController@create')->name('articles.create');
 Route::post('/articles', 'ArticlesController@store');
 
+//Delete an article
+Route::delete('/articles/{article}', 'ArticlesController@destroy');
+
 // Single article and comments
-Route::get('/articles/{article}', 'ArticlesController@show');
+Route::get('/articles/{article}', 'ArticlesController@show')->name('articles.show');
 Route::post('articles/{article}', 'CommentsController@store');
 
 // CHAT //

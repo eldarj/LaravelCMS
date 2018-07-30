@@ -23,6 +23,9 @@ body {
     .vert-scroll {
         overflow-y: scroll;
     }
+    .text-minimal {
+        color: #aaa !important;
+    }
     .navbar-laravel {
       background-color: #fff;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
@@ -75,6 +78,17 @@ body {
             }
         }
     }
+    .message-time {
+        font-size: 10px;
+    }
+
+    .message-profile-pic {
+        width: 30px;
+        height: 30px;
+        background-size: cover;
+        background-position: center;
+        box-shadow: 0px 0px 0px 1px #dee2e6;
+    }
     footer {
         position: relative;
 
@@ -83,7 +97,7 @@ body {
 
             background-image: url('/images/walls/b3.jpg');
             background-size: cover;
-            background-position: center;
+            background-position: bottom;
             opacity: .3;
 
             position: absolute;

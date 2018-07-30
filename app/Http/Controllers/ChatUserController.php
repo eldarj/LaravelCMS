@@ -90,33 +90,23 @@ class ChatUserController extends Controller
         $chatUser->update(request()->all());
 
         // Check for uploaded files
-        $uploaded = [];
         if ($request->avatar) {
-            $uploaded = [
-                'field' => 'avatar', 
-                'dest' => 'images/users/profiles/upload/icon', 
-                'file' => $request->avatar
-            ];
+            $generateFileName = $request->user_id . 
+                        "." . $request->avatar->getClientOriginalExtension();
+            // Upload file
+            $request->avatar->move('images/users/profiles/upload/icon', $generateFileName);
+            // Store path in db
+            $chatUser->avatar = '/' . 'images/users/profiles/upload/icon' . '/' . $generateFileName;
         }
         if ($request->cover_photo) {
-            $uploaded = [
-                'field' => 'cover_photo', 
-                'dest' => 'images/users/profiles/upload/covers', 
-                'file' => $request->cover_photo
-            ];
-        }
-        if ($uploaded) {
-            // Generate paths
-            // $generateFileName = $request->user_id . md5_file($uploaded['file']) . now()->format('his') . 
-            //             "." . $uploaded['file']->getClientOriginalExtension();
             $generateFileName = $request->user_id . 
-                        "." . $uploaded['file']->getClientOriginalExtension();
-
+                        "." . $request->cover_photo->getClientOriginalExtension();
             // Upload file
-            $uploaded['file']->move($uploaded['dest'], $generateFileName);
-            
+            $request->cover_photo->move('images/users/profiles/upload/covers', $generateFileName);
             // Store path in db
-            $chatUser->{$uploaded["field"]} = '/' . $uploaded['dest'] . '/' . $generateFileName;
+            $chatUser->cover_photo = '/' . 'images/users/profiles/upload/covers' . '/' . $generateFileName;
+        }
+        if ($request->avatar || $request->cover_photo) {
             $chatUser->save();
         }
         return redirect()->route('profile', compact('chatUser'));

@@ -6,8 +6,8 @@
 	<form method="POST" action="/login">
 	  {{ csrf_field() }}
 	  <div class="form-group">
-	    <label for="emailInput">Email</label>
-	    <input type="email" class="form-control" id="emailInput" name="email" aria-describedby="emailHelp" placeholder="Email address" required/>
+	    <label for="userInput">Username</label>
+	    <input type="text" class="form-control" id="usernameInput" name="username" aria-describedby="usernameHelp" placeholder="Username" required/>
 	  </div>
 	  <div class="form-group">
 	    <label for="passwordInput">Password</label>
