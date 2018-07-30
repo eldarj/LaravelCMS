@@ -35,8 +35,8 @@ Route::post('articles/{article}', 'CommentsController@store');
 Route::get('/chat/signup', 'ChatUserController@create')->name('chat.signup');
 Route::post('/chat/signup', 'ChatUserController@store');
 // Chat UI
-Route::get('/chat', 'ChatMessageController@index');
-Route::post('/chat', 'ChatMessageController@store');
+Route::get('/chat', 'ChatMessageController@index')->name('chat.index')->middleware('auth.chat');;
+Route::post('/chat', 'ChatMessageController@store')->middleware('auth.chat');;
 
 // PROFILE //
 Route::get('/profile/{chatUser}', 'ChatUserController@index')->name('profile');

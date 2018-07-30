@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\ChatMessage;
+use App\ChatUser;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -16,15 +17,13 @@ class ChatMessageController extends Controller
     public function index()
     {
         $messages = ChatMessage::all();
-
         for ($i = 1; $i < count($messages); $i++) {
-            $prev = $messages[$i - 1];
-            if ($prev->avatar === $messages[$i]->avatar) {
-                $messages[$i]->hideimg = true;
-            }
-            if ($prev->created_at->toDateString() === $messages[$i]->created_at->toDateString()) {
-                $prev->hidetimestamp = true;
-            }
+                if ($messages[$i - 1]->user->chatUser->avatar === $messages[$i]->user->chatUser->avatar) {
+                    $messages[$i]->hideimg = true;
+                    if ($messages[$i - 1]->created_at->toDateString() === $messages[$i]->created_at->toDateString()) {
+                        $messages[$i - 1]->hidetimestamp = true;
+                    }
+                }
         }
         return view('chat.index', compact('messages'));
     }

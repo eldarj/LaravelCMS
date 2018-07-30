@@ -51,7 +51,8 @@ class ChatUserController extends Controller
         auth()->user()->registerOnChat($newChatUser);
 
         // redirect to index view
-        return redirect()->route('profile', ['chatUser' => $newChatUser]);
+        // return redirect()->route('profile', ['chatUser' => $newChatUser]);
+        return redirect()->route('chat.index');
     }
 
     /**
