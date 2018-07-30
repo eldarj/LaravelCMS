@@ -1302,6 +1302,18 @@ window.SimpleBar = __WEBPACK_IMPORTED_MODULE_0_simplebar__["default"];
 // Set mainbody as the main scroll box
 var mainBody = new __WEBPACK_IMPORTED_MODULE_0_simplebar__["default"](document.getElementById('main-body'));
 
+$(document).ready(function () {
+	// Magnific popup
+	$('.image-popup-vertical-fit').magnificPopup({
+		type: 'image',
+		closeOnContentClick: true,
+		mainClass: 'mfp-img-mobile',
+		image: {
+			verticalFit: true
+		}
+	});
+});
+
 /***/ }),
 /* 35 */
 /***/ (function(module, exports, __webpack_require__) {
