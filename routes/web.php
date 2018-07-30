@@ -54,8 +54,17 @@ Route::post('/chat/signup', 'ChatUserController@store');
 | PROFILE
 |--------------------------------------------------------------------------
 */
-Route::get('/profile/{chatUser}', 'ChatUserController@index')->name('profile');
-Route::post('/profile/update', 'ChatUserController@update')->name('profile.update');
+Route::get('/profile/{chatUser}', 'ChatUserController@index')->name('profile')->middleware('auth.chat');
+Route::post('/profile/update', 'ChatUserController@update')->name('profile.update')->middleware('auth.chat');
+
+/*
+|--------------------------------------------------------------------------
+| PROFILE
+|--------------------------------------------------------------------------
+*/
+Route::get('/friends', 'FriendsController@index')->name('friends')->middleware('auth.chat');
+Route::get('/friends/{chatUser}', 'FriendsController@add')->name('friends.add')->middleware('auth.chat');
+Route::get('/friends/find', 'FriendsController@find')->name('friends.find')->middleware('auth.chat');
 
 /*
 |--------------------------------------------------------------------------

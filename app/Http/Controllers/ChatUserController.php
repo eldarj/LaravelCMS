@@ -9,7 +9,8 @@ use App\Tag;
 use Illuminate\Http\Request;
 
 class ChatUserController extends Controller
-{
+{   
+
     /**
      * Display a listing of the resource.
      *
@@ -123,4 +124,5 @@ class ChatUserController extends Controller
     {
         //
     }
+
 }
