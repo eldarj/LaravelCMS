@@ -22,10 +22,12 @@
 				</div>
 			</div>
 		</div>
-		<div id="settings-button" class="settings-button">
-			<a href="{{ route('friends.add', ['chatUser' => $chatUser]) }}" class="btn btn-info">
-				Add to friends
-			</a>
+		<div id="settings-button" class="settings-button d-flex flex-row">
+			<div class="friendship-settings-wrap" data-ajax-onload data-ajax-target="friendship-settings" data-ajax-action="{{ route('friends.friendship_settings', ['chatUser1' => $chatUser, 'chatuser2' => auth()->user()->chatUser]) }}" data-ajax-method="get">
+       			<div id="friendship-settings" class="d-flex flex-row align-items-center">
+          			<span class="mx-4 text-center text-secondary">...</span>
+       			</div>
+			</div>
 			<button class="btn btn-light">
 				<i class="fas fa-cog"></i>
 			</button>

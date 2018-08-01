@@ -29,5 +29,10 @@
         </div>
 	</div>
 	@endforeach
+        @if(!count($friends))
+          <div class="dropdown-item friend-request no-requests px-2 d-flex flex-row">
+            @include('friends.pronadji')
+          </div>
+        @endif
 </div>
 @endsection
