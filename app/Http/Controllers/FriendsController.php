@@ -16,8 +16,10 @@ class FriendsController extends Controller
     public function index()
     {
         $friends = Friends::where('chat_user_id', auth()->user()->chatUser->id)->get();
+        $friends = $friends->where('confirmed', 1)->values();
+        $invited = $friends->where('confirmed', 0)->values();
 
-        return view('friends.index', compact('friends'));
+        return view('friends.index', compact('friends', 'invited'));
     }
 
     public function find()
@@ -30,6 +32,47 @@ class FriendsController extends Controller
         auth()->user()->chatUser->addFriend([
             'receiving_user_id' => $chatUser->id
         ]);
+    }
+
+    public function friendship_settings(ChatUser $chatUser1, ChatUser $chatUser2)
+    {
+        $chatUser = $chatUser1;
+        if ($friends = $chatUser1->are_friends($chatUser2)) {
+            if ($friends->confirmed) {
+                // friends
+                $view = 'friends.settings.friends';
+            } else {
+                if ($friends->receiving_user_id == $chatUser1->id && $friends->chat_user_id == $chatUser2->id) {
+                    // 2nd sent to 1st
+                    $chatUser->friend_relation = $friends;
+                    $view = 'friends.settings.requested';
+                } 
+                if ($friends->receiving_user_id == $chatUser2->id && $friends->chat_user_id == $chatUser1->id) {
+                    // 1st sent to 2nd
+                    $chatUser->friend_relation = $friends;
+                    $view = 'friends.settings.requested';
+                }
+            }
+        } else {
+            // no friends
+           $view = 'friends.settings.nofriends';
+        }
+        return view("{$view}", compact('chatUser'));
+    }
+
+    public function requests()
+    {
+        $friends = auth()->user()->chatuser->friend_requests->where('confirmed', 0);
+        return view('friends.requests', compact('friends'));
+    }
+
+    public function confirm($giving_id)
+    {
+        $friend_request = auth()->user()->chatUser->friend_requests->where('chat_user_id', $giving_id)->first();
+        $friend_request->confirmed = 1;
+        $friend_request->touch();
+        $friend_request->save();
+        return redirect()->route('friends.requests');
     }
 
     /**
