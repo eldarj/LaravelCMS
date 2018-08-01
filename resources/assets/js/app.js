@@ -22,6 +22,11 @@
 // });
 
 /**
+ * Get ajax handlers
+ */
+require('./ajaxcalls');
+
+/**
  * SimpleBar by ~https://github.com/Grsmto/simplebar
  */
 require('simplebar');
@@ -40,5 +45,14 @@ $(document).ready(function() {
 		image: {
 			verticalFit: true
 		}
+	});
+
+	$('#dontCloseDropdown').on('hide.bs.dropdown', function (e) {
+	    let target = $(e.target);
+	    if(target.hasClass("keepopen") || target.parents(".keepopen").length){
+	        return false; // returning false should stop the dropdown from hiding.
+	    }else{
+	        return true;
+    	}
 	});
 });

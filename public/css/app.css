@@ -151,6 +151,16 @@ body .avatar-img.small {
   width: 100px;
 }
 
+body .avatar-img.extra-small {
+  height: 50px;
+  width: 50px;
+}
+
+body .wh-35 {
+  height: 35px;
+  width: 35px;
+}
+
 body .cover-container {
   width: 100%;
   position: relative;
