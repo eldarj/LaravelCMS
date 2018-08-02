@@ -11,6 +11,9 @@
 // Simplebar
 @import '~simplebar/dist/simplebar.css';
 
+// Balls Background
+@import './balls-bg.scss';
+
 body {
     padding: 0;
     #main-body {
@@ -19,6 +22,19 @@ body {
     .max-display {
         height: 100vh;
         width: 100vw;
+    }
+    .all-childs-relative .jumbotron * {
+        position: relative;
+        z-index: 2;
+    }
+    .bg-rgba-white-90 {
+        background: rgba(255,255,255,.9);
+    }
+    .bg-rgba-white-70 {
+        background: rgba(255,255,255,.7);
+    }
+    .bg-rgba-white-50 {
+        background: rgba(255,255,255,.5);
     }
     .vert-scroll {
         overflow-y: scroll;
@@ -112,7 +128,7 @@ body {
             background-image: url('/images/walls/b3.jpg');
             background-size: cover;
             background-position: bottom;
-            opacity: .3;
+            opacity: .5;
 
             position: absolute;
             z-index: -1;

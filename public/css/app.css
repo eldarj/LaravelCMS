@@ -112,7 +112,24 @@
 
 [data-simplebar-direction="rtl"] .simplebar-track.horizontal {
     right: 0;
-}body {
+}.ball-container {
+  position: absolute !important;
+  z-index: 1 !important;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.ball {
+  position: absolute !important;
+  z-index: 1 !important;
+  border-radius: 100%;
+  opacity: 0.6;
+}
+
+body {
   padding: 0;
 }
 
@@ -123,6 +140,23 @@ body #main-body {
 body .max-display {
   height: 100vh;
   width: 100vw;
+}
+
+body .all-childs-relative .jumbotron * {
+  position: relative;
+  z-index: 2;
+}
+
+body .bg-rgba-white-90 {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+body .bg-rgba-white-70 {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+body .bg-rgba-white-50 {
+  background: rgba(255, 255, 255, 0.5);
 }
 
 body .vert-scroll {
@@ -232,7 +266,7 @@ body footer:after {
   background-image: url("/images/walls/b3.jpg");
   background-size: cover;
   background-position: bottom;
-  opacity: .3;
+  opacity: .5;
   position: absolute;
   z-index: -1;
   top: 0;

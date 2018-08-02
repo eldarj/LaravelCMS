@@ -27,6 +27,10 @@
 require('./ajaxcalls');
 
 /**
+ * Get ball bg
+ */
+require('./balls-bg');
+/**
  * SimpleBar by ~https://github.com/Grsmto/simplebar
  */
 require('simplebar');

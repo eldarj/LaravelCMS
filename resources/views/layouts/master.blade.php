@@ -32,7 +32,10 @@
         </div>
       @endif
 
-      @yield ('header')
+      
+      <div class="header-wrap position-relative all-childs-relative">
+        @yield ('header')
+      </div>
 
         <main role="main" class="py-4 container">
           @yield ('content')
