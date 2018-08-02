@@ -9,7 +9,7 @@
     </a>
     <a class="nav-link" href="/friends">
       Friends
-      <span class="badge badge-pill bg-light align-text-bottom">{{auth()->user()->chatUser->friendships_sent->where('confirmed', 1)->count()}}</span>
+      <span class="badge badge-pill bg-light align-text-bottom">{{auth()->user()->chatUser->friendships_sent->where('confirmed', 1)->count() + auth()->user()->chatUser->friendships_received->where('confirmed', 1)->count()}}</span>
     </a>
     <div class="dropdown friend-requests-nav">
       <a class="nav-link" 

@@ -15,12 +15,13 @@ class FriendsController extends Controller
      */
     public function index()
     {
-        $friends = Friends::where('chat_user_id', auth()->user()->chatUser->id)->get();
-        $invited = $friends->where('confirmed', 0)->values();
-        $friends = $friends->where('confirmed', 1)->values();
-        $received = Friends::where('receiving_user_id', auth()->user()->chatUser->id)->get();
+        $id = auth()->user()->chatUser->id;
+        $invited = Friends::where('chat_user_id', $id)
+                            ->get();
+        $received = Friends::where('receiving_user_id', $id)
+                            ->get();
 
-        return view('friends.index', compact('friends', 'invited', 'received'));
+        return view('friends.index', compact('invited', 'received'));
     }
 
     public function find()
@@ -37,6 +38,11 @@ class FriendsController extends Controller
 
     public function friendship_settings(ChatUser $chatUser1, ChatUser $chatUser2)
     {
+        if ($chatUser1->id == $chatUser2->id) {
+            $chatUser = $chatUser1;
+            return view('friends.settings.myself', compact('chatUser'));
+
+        }
         $chatUser = $chatUser1;
         if ($friends = $chatUser1->are_friends($chatUser2)) {
             if ($friends->confirmed) {
@@ -67,13 +73,16 @@ class FriendsController extends Controller
         return view('friends.requests', compact('friends'));
     }
 
-    public function confirm($giving_id)
+    public function confirm($giving_id, $route = null)
     {
+        if (null === $route) {
+            $route = 'friends.requests';
+        }
         $friend_request = auth()->user()->chatUser->friendships_received->where('chat_user_id', $giving_id)->first();
         $friend_request->confirmed = 1;
         $friend_request->touch();
         $friend_request->save();
-        return redirect()->route('friends.requests');
+        return redirect()->route("{$route}");
     }
 
     /**

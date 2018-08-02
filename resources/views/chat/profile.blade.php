@@ -22,15 +22,17 @@
 				</div>
 			</div>
 		</div>
-		<div id="settings-button" class="settings-button d-flex flex-row">
+		<div class="settings-button d-flex flex-row">
 			<div class="friendship-settings-wrap" data-ajax-onload data-ajax-target="friendship-settings" data-ajax-action="{{ route('friends.friendship_settings', ['chatUser1' => $chatUser, 'chatuser2' => auth()->user()->chatUser]) }}" data-ajax-method="get">
        			<div id="friendship-settings" class="d-flex flex-row align-items-center">
           			<span class="mx-4 text-center text-secondary">...</span>
        			</div>
 			</div>
-			<button class="btn btn-light">
-				<i class="fas fa-cog"></i>
-			</button>
+			<div id="settings-button">
+				<button class="btn btn-light">
+					<i class="fas fa-cog"></i>
+				</button>
+			</div>
 		</div>
 	</div>
 	<div class="d-flex profile-body-container">

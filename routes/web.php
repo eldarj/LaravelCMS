@@ -66,8 +66,10 @@ Route::post('/profile/update', 'ChatUserController@update')->name('profile.updat
 Route::get('/friends', 'FriendsController@index')->name('friends')->middleware('auth.chat');
 
 Route::get('/friends/requests', 'FriendsController@requests')->name('friends.requests')->middleware('auth.chat');
+
 Route::get('/friends/settings/{chatUser1}/{chatUser2}', 'FriendsController@friendship_settings')->name('friends.friendship_settings')->middleware('auth.chat');
 Route::get('/friends/confirm/{friends}', 'FriendsController@confirm')->name('friends.confirm')->middleware('auth.chat');
+Route::get('/friends/confirm/{friends}/{route}', 'FriendsController@confirm')->name('friends.confirm')->middleware('auth.chat');
 
 Route::get('/friends/{chatUser}', 'FriendsController@add')->name('friends.add')->middleware('auth.chat');
 Route::get('/friends/find', 'FriendsController@find')->name('friends.find')->middleware('auth.chat');
