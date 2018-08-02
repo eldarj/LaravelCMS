@@ -21,6 +21,11 @@ class ChatUserController extends Controller
         return view ('chat.profile', compact('chatUser'));
     }
 
+    public function profile()
+    {
+        return redirect()->route('profile', ['chatUser' => auth()->user()->chatUser]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

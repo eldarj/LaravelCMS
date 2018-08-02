@@ -54,6 +54,7 @@ Route::post('/chat/signup', 'ChatUserController@store');
 | PROFILE
 |--------------------------------------------------------------------------
 */
+Route::get('/profile', 'ChatUserController@profile')->name('profile.base')->middleware('auth.chat');
 Route::get('/profile/{chatUser}', 'ChatUserController@index')->name('profile')->middleware('auth.chat');
 Route::post('/profile/update', 'ChatUserController@update')->name('profile.update')->middleware('auth.chat');
 

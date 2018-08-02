@@ -8,12 +8,12 @@ class ChatUser extends Model
      * Relation
      * @return relation returns many comments
      */
-    public function friends()
+    public function friendships_sent()
     {
         return $this->hasMany(Friends::class);
     }
 
-    public function friend_requests()
+    public function friendships_received()
     {
         return $this->hasmany(Friends::class, 'receiving_user_id', 'id');
     }
@@ -30,7 +30,7 @@ class ChatUser extends Model
 
     public function addFriend($receiving_user_id)
     {
-        $this->friends()->create($receiving_user_id);
+        $this->friendships_sent()->create($receiving_user_id);
     }
 
     /**
@@ -57,9 +57,9 @@ class ChatUser extends Model
      */
     public function sent_request_to(ChatUser $chatUser)
     {
-        if (count($this->friends->where('receiving_user_id', $chatUser->id)))
+        if (count($this->friendships_sent->where('receiving_user_id', $chatUser->id)))
         { 
-            return $this->friends->where('receiving_user_id', $chatUser->id);
+            return $this->friendships_sent->where('receiving_user_id', $chatUser->id);
         }
         return false;
     }
@@ -67,13 +67,13 @@ class ChatUser extends Model
     /**
      * Retrieves and checks the received request from 2nd to 1st User
      * @param  ChatUser $chatUser user that is being checked against
-     * @return Friends - friends relation or false
+     * @return Friends - friendships_sent relation or false
      */
     public function received_request_from(ChatUser $chatUser)
     {
-        if (count($this->friend_requests->where('chat_user_id', $chatUser->id)))
+        if (count($this->friendships_received->where('chat_user_id', $chatUser->id)))
         {
-            return $this->friend_requests->where('chat_user_id', $chatUser->id);
+            return $this->friendships_received->where('chat_user_id', $chatUser->id);
         }
         return false;
     }
