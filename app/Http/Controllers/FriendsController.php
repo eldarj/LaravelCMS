@@ -16,10 +16,11 @@ class FriendsController extends Controller
     public function index()
     {
         $friends = Friends::where('chat_user_id', auth()->user()->chatUser->id)->get();
-        $friends = $friends->where('confirmed', 1)->values();
         $invited = $friends->where('confirmed', 0)->values();
+        $friends = $friends->where('confirmed', 1)->values();
+        $received = Friends::where('receiving_user_id', auth()->user()->chatUser->id)->get();
 
-        return view('friends.index', compact('friends', 'invited'));
+        return view('friends.index', compact('friends', 'invited', 'received'));
     }
 
     public function find()
@@ -62,13 +63,13 @@ class FriendsController extends Controller
 
     public function requests()
     {
-        $friends = auth()->user()->chatuser->friend_requests->where('confirmed', 0);
+        $friends = auth()->user()->chatuser->friendships_received->where('confirmed', 0);
         return view('friends.requests', compact('friends'));
     }
 
     public function confirm($giving_id)
     {
-        $friend_request = auth()->user()->chatUser->friend_requests->where('chat_user_id', $giving_id)->first();
+        $friend_request = auth()->user()->chatUser->friendships_received->where('chat_user_id', $giving_id)->first();
         $friend_request->confirmed = 1;
         $friend_request->touch();
         $friend_request->save();
